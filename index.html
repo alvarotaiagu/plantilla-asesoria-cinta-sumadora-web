@@ -1,0 +1,582 @@
+<!--
+  Sitio de demostración. Refoxo Xestión es un negocio ficticio; los datos,
+  fotografías y opiniones de esta página son de muestra y no corresponden a
+  ninguna asesoría real. Plantilla de la biblioteca WEBS NEGOCIOS.
+-->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Refoxo Xestión — Asesoría fiscal, laboral y contable en Noia</title>
+<meta name="description" content="Asesoría fiscal, laboral, contable y de constitución de empresas en Noia (A Coruña). Sitio de demostración: negocio ficticio.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#1B3A4B">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Refoxo Xestión — Asesoría fiscal, laboral y contable en Noia">
+<meta property="og:description" content="Cada cifra en su sitio: fiscal, laboral, contable y constitución de empresas. Sitio de demostración, negocio ficticio.">
+<meta property="og:image" content="assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="es_ES">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="manifest" href="manifest.json">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Work+Sans:wght@400;500;600;700;800&display=swap">
+
+<link rel="stylesheet" href="css/estilo.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "AccountingService",
+  "name": "Refoxo Xestión",
+  "description": "Asesoría fiscal, laboral, contable y de constitución de empresas en Noia, A Coruña. Sitio de demostración de negocio ficticio.",
+  "image": "assets/og.png",
+  "telephone": "+34981000047",
+  "email": "hola@refoxoxestion.example",
+  "priceRange": "€€",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Rúa do Curro, 14, entresuelo",
+    "addressLocality": "Noia",
+    "addressRegion": "A Coruña",
+    "postalCode": "15200",
+    "addressCountry": "ES"
+  },
+  "openingHoursSpecification": [
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "09:00", "closes": "14:00" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "16:00", "closes": "19:00" }
+  ]
+}
+</script>
+</head>
+<body>
+
+<a class="salto" href="#contenido">Saltar al contenido</a>
+
+<!-- ===================== CORTINA DE ENTRADA ===================== -->
+<div class="cortina" id="cortina" aria-hidden="true">
+  <div class="cortina-papel">
+    <div class="cortina-cinta">
+      <span class="cortina-cifra" id="cortinaCifra">0,00</span>
+    </div>
+    <p class="cortina-marca">REFOXO XESTIÓN</p>
+  </div>
+  <div class="cortina-borde"></div>
+</div>
+
+<!-- ===================== ROLLO / BARRA DE PROGRESO ===================== -->
+<aside class="rollo" id="rollo" aria-hidden="true">
+  <div class="rollo-carrete"></div>
+  <div class="rollo-cinta">
+    <div class="rollo-relleno" id="rolloRelleno"></div>
+    <ul class="rollo-marcas" id="rolloMarcas">
+      <li data-i="0"></li><li data-i="1"></li><li data-i="2"></li><li data-i="3"></li>
+      <li data-i="4"></li><li data-i="5"></li><li data-i="6"></li><li data-i="7"></li>
+    </ul>
+  </div>
+  <p class="rollo-etiqueta" id="rolloEtiqueta">Portada</p>
+</aside>
+
+<!-- ===================== CABECERA ===================== -->
+<header class="cabecera" id="cabecera">
+  <a class="marca" href="#portada">
+    <img src="assets/logo.svg" alt="" width="40" height="40" class="marca-mark">
+    <span class="marca-texto">Refoxo <em>Xestión</em></span>
+  </a>
+  <nav class="nav" id="nav">
+    <ul class="nav-lista">
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#confianza">Por qué nosotros</a></li>
+      <li><a href="#equipo">Equipo</a></li>
+      <li><a href="#calendario">Calendario fiscal</a></li>
+      <li><a href="#resenas">Opiniones</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+    <a class="boton boton--bronce nav-cta" href="#contacto" data-iman>Pedir cita</a>
+  </nav>
+  <button class="hamburguesa" id="hamburguesa" aria-expanded="false" aria-label="Abrir el menú" aria-controls="nav">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<main id="contenido">
+
+  <!-- ===================== 1. PORTADA ===================== -->
+  <section class="portada" id="portada" aria-label="Portada">
+    <div class="portada-caja">
+      <p class="rotulo"><span>Nº 001</span> Asesoría fiscal · laboral · contable · Noia (A Coruña)</p>
+      <h1 class="titular titular--hero" data-revelar>Línea a línea, hasta que cuadra.</h1>
+      <p class="parrafo parrafo--grande">
+        Fiscal, laboral, contable y constitución de empresas para autónomos y pymes
+        de Noia y la comarca, todo en un mismo despacho y con la misma persona al
+        otro lado del teléfono.
+      </p>
+      <div class="portada-acciones">
+        <a class="boton boton--bronce" href="#contacto" data-iman>Pedir cita</a>
+        <a class="boton boton--linea" href="#servicios">Ver servicios</a>
+      </div>
+      <dl class="portada-datos">
+        <div><dt>Despacho</dt><dd>Rúa do Curro, 14, entresuelo · Noia</dd></div>
+        <div><dt>Horario</dt><dd>L–V, 9:00–14:00 y 16:00–19:00</dd></div>
+        <div><dt>Teléfono</dt><dd><a href="tel:+34981000047">981 00 00 47</a></dd></div>
+      </dl>
+    </div>
+    <figure class="portada-ticket" aria-hidden="true">
+      <div class="ticket-borde ticket-borde--arriba"></div>
+      <div class="ticket-cuerpo">
+        <p class="ticket-linea"><span>Fiscal</span><span>✓</span></p>
+        <p class="ticket-linea"><span>Laboral</span><span>✓</span></p>
+        <p class="ticket-linea"><span>Contable</span><span>✓</span></p>
+        <p class="ticket-linea"><span>Constitución</span><span>✓</span></p>
+        <p class="ticket-total"><span>Total</span><span class="ticket-total-cifra">EN SU SITIO</span></p>
+      </div>
+      <div class="ticket-borde ticket-borde--abajo"></div>
+    </figure>
+  </section>
+
+  <!-- ===================== 2. MARQUEE DE ÁREAS ===================== -->
+  <section class="franja" id="areas" aria-label="Áreas de servicio">
+    <div class="franja-pista" id="franjaPista">
+      <div class="franja-grupo">
+        <span>Fiscal</span><i></i><span>Laboral</span><i></i><span>Contable</span><i></i>
+        <span>Constitución de empresas</span><i></i><span>Subvenciones</span><i></i>
+        <span>Autónomos</span><i></i><span>Pymes</span><i></i>
+      </div>
+      <div class="franja-grupo" aria-hidden="true">
+        <span>Fiscal</span><i></i><span>Laboral</span><i></i><span>Contable</span><i></i>
+        <span>Constitución de empresas</span><i></i><span>Subvenciones</span><i></i>
+        <span>Autónomos</span><i></i><span>Pymes</span><i></i>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== 3. SERVICIOS (cinta que se suma) ===================== -->
+  <section class="servicios" id="servicios" aria-label="Servicios">
+    <div class="servicios-cab">
+      <p class="sobretitulo">Nº 002 · Servicios</p>
+      <h2 class="titular" data-revelar>Seis líneas, una sola cinta.</h2>
+      <p class="parrafo">Cada gestión que llevamos se anota como una línea más de la
+        misma cuenta. Al final, todo suma en el mismo sitio: tu carpeta.</p>
+    </div>
+
+    <ul class="cinta-lista" id="cintaLista">
+      <li class="cinta-linea">
+        <div class="cinta-linea-cuerpo">
+          <span class="cinta-num">01</span>
+          <div class="cinta-icono" aria-hidden="true"><svg viewBox="0 0 40 40"><rect x="7" y="6" width="26" height="30" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><line x1="12" y1="14" x2="28" y2="14" stroke="currentColor" stroke-width="2"/><line x1="12" y1="21" x2="28" y2="21" stroke="currentColor" stroke-width="2"/><line x1="12" y1="28" x2="22" y2="28" stroke="currentColor" stroke-width="2"/></svg></div>
+          <div class="cinta-texto">
+            <h3>Fiscal</h3>
+            <p>IVA, IRPF, Sociedades y el resto de modelos trimestrales y anuales,
+              presentados a tiempo y explicados sin tecnicismos.</p>
+          </div>
+        </div>
+        <span class="cinta-acumulado" data-acumulado="1">01 de 06</span>
+      </li>
+
+      <li class="cinta-linea">
+        <div class="cinta-linea-cuerpo">
+          <span class="cinta-num">02</span>
+          <div class="cinta-icono" aria-hidden="true"><svg viewBox="0 0 40 40"><circle cx="15" cy="14" r="5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M6 33c0-7 5-11 9-11s9 4 9 11" fill="none" stroke="currentColor" stroke-width="2"/><line x1="27" y1="12" x2="34" y2="12" stroke="currentColor" stroke-width="2"/><line x1="27" y1="19" x2="34" y2="19" stroke="currentColor" stroke-width="2"/></svg></div>
+          <div class="cinta-texto">
+            <h3>Laboral</h3>
+            <p>Nóminas, altas y bajas en la Seguridad Social, contratos y despidos.
+              Nos ocupamos de tu plantilla como si fuera la nuestra.</p>
+          </div>
+        </div>
+        <span class="cinta-acumulado" data-acumulado="2">02 de 06</span>
+      </li>
+
+      <li class="cinta-linea">
+        <div class="cinta-linea-cuerpo">
+          <span class="cinta-num">03</span>
+          <div class="cinta-icono" aria-hidden="true"><svg viewBox="0 0 40 40"><rect x="6" y="9" width="28" height="22" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><line x1="6" y1="16" x2="34" y2="16" stroke="currentColor" stroke-width="2"/><line x1="13" y1="9" x2="13" y2="31" stroke="currentColor" stroke-width="2"/></svg></div>
+          <div class="cinta-texto">
+            <h3>Contable</h3>
+            <p>Libros oficiales, cuentas anuales y conciliación mensual, para que
+              sepas cómo va el negocio sin esperar a cierre de año.</p>
+          </div>
+        </div>
+        <span class="cinta-acumulado" data-acumulado="3">03 de 06</span>
+      </li>
+
+      <li class="cinta-linea">
+        <div class="cinta-linea-cuerpo">
+          <span class="cinta-num">04</span>
+          <div class="cinta-icono" aria-hidden="true"><svg viewBox="0 0 40 40"><path d="M20 6l12 6v6c0 10-6 16-12 18-6-2-12-8-12-18v-6z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M15 20l4 4 8-8" fill="none" stroke="currentColor" stroke-width="2"/></svg></div>
+          <div class="cinta-texto">
+            <h3>Constitución de empresas</h3>
+            <p>Alta de autónomos, sociedades limitadas y estatutos, de la primera
+              cita a la primera factura.</p>
+          </div>
+        </div>
+        <span class="cinta-acumulado" data-acumulado="4">04 de 06</span>
+      </li>
+
+      <li class="cinta-linea">
+        <div class="cinta-linea-cuerpo">
+          <span class="cinta-num">05</span>
+          <div class="cinta-icono" aria-hidden="true"><svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="14" fill="none" stroke="currentColor" stroke-width="2"/><path d="M14 20l4 4 8-9" fill="none" stroke="currentColor" stroke-width="2"/></svg></div>
+          <div class="cinta-texto">
+            <h3>Subvenciones y ayudas</h3>
+            <p>Rastreamos las convocatorias que te tocan y montamos el expediente:
+              lo difícil no es pedirla, es no perder el plazo.</p>
+          </div>
+        </div>
+        <span class="cinta-acumulado" data-acumulado="5">05 de 06</span>
+      </li>
+
+      <li class="cinta-linea">
+        <div class="cinta-linea-cuerpo">
+          <span class="cinta-num">06</span>
+          <div class="cinta-icono" aria-hidden="true"><svg viewBox="0 0 40 40"><path d="M8 30c4-14 8-20 12-20s8 6 12 20" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="20" cy="12" r="3" fill="currentColor"/></svg></div>
+          <div class="cinta-texto">
+            <h3>Asesoramiento continuo</h3>
+            <p>Consultas todo el año, no solo en campaña de Renta. Si dudas si algo
+              se declara, pregunta antes de hacerlo.</p>
+          </div>
+        </div>
+        <span class="cinta-acumulado" data-acumulado="6">06 de 06</span>
+      </li>
+    </ul>
+
+    <aside class="cinta-panel" aria-hidden="true">
+      <p class="cinta-panel-eti">Van sumadas</p>
+      <p class="cinta-panel-cifra"><span id="cintaContador">00</span> de 06</p>
+      <p class="cinta-panel-nota">Cada línea, una gestión completa.</p>
+    </aside>
+  </section>
+
+  <!-- ===================== 4. CONFIANZA ===================== -->
+  <section class="confianza" id="confianza" aria-label="Por qué elegirnos">
+    <div class="confianza-rejilla">
+      <div class="confianza-texto">
+        <p class="sobretitulo">Nº 003 · Por qué nosotros</p>
+        <h2 class="titular" data-revelar>Lo que no se ve en la factura.</h2>
+        <p class="parrafo parrafo--grande">
+          Cualquiera te lleva los modelos. Lo que marca la diferencia es quién
+          coge el teléfono cuando Hacienda te manda una carta que no entiendes.
+        </p>
+        <ul class="confianza-lista">
+          <li><h3>Trato directo</h3><p>Hablas siempre con la misma persona, no con
+            un buzón de voz ni un ticket de soporte.</p></li>
+          <li><h3>Honorarios claros</h3><p>Una tarifa por bloque de servicios,
+            cerrada antes de empezar. Sin sorpresas en la próxima factura.</p></li>
+          <li><h3>Cerca, en Noia</h3><p>A pie de calle, en el centro. Si hace falta
+            firmar algo en persona, no hay que coger el coche.</p></li>
+          <li><h3>Respuesta en 24 horas</h3><p>Ninguna duda se queda sin
+            contestar de un día para otro, ni siquiera por WhatsApp.</p></li>
+        </ul>
+      </div>
+
+      <figure class="ticket ticket--grande" aria-hidden="true">
+        <div class="ticket-borde ticket-borde--arriba"></div>
+        <div class="ticket-cuerpo">
+          <p class="ticket-cab">Motivos para elegirnos</p>
+          <p class="ticket-linea"><span>Trato directo</span><span>✓</span></p>
+          <p class="ticket-linea"><span>Honorarios claros</span><span>✓</span></p>
+          <p class="ticket-linea"><span>Cerca, en Noia</span><span>✓</span></p>
+          <p class="ticket-linea"><span>Respuesta en 24 h</span><span>✓</span></p>
+          <p class="ticket-total ticket-total--grande">
+            <span>Total</span><span class="ticket-total-cifra">CONFIANZA</span>
+          </p>
+          <p class="ticket-pie">Cuenta simbólica: no es ninguna cifra de facturación.</p>
+        </div>
+        <div class="ticket-borde ticket-borde--abajo"></div>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ===================== 5. EQUIPO ===================== -->
+  <section class="equipo" id="equipo" aria-label="Equipo">
+    <div class="equipo-cab">
+      <p class="sobretitulo">Nº 004 · Equipo</p>
+      <h2 class="titular" data-revelar>Dos personas, una misma carpeta.</h2>
+      <p class="parrafo">Un despacho pequeño a propósito: para que sepas siempre
+        quién lleva tu caso.</p>
+    </div>
+    <ul class="equipo-lista">
+      <li class="ticket ticket--persona">
+        <div class="ticket-borde ticket-borde--arriba"></div>
+        <div class="ticket-cuerpo">
+          <p class="ticket-cab">Ficha 01</p>
+          <h3>Xoán Refoxo Lens</h3>
+          <p class="ticket-rol">Fundador · asesor fiscal</p>
+          <p>Veinticinco años sentado a la misma mesa del despacho, en el centro
+            de Noia. Empezó llevando la contabilidad de un par de bateeiros de la
+            ría y hoy sigue prefiriendo la calculadora de cinta a la hoja de
+            cálculo, aunque acabe pasando los números al ordenador igual.</p>
+        </div>
+        <div class="ticket-borde ticket-borde--abajo"></div>
+      </li>
+      <li class="ticket ticket--persona">
+        <div class="ticket-borde ticket-borde--arriba"></div>
+        <div class="ticket-cuerpo">
+          <p class="ticket-cab">Ficha 02</p>
+          <h3>Antía Seixo Bugallo</h3>
+          <p class="ticket-rol">Asesora laboral · constitución de empresas</p>
+          <p>Se incorporó al despacho en 2016 y lleva las nóminas de media Rúa do
+            Curro de memoria. Es la que contesta el WhatsApp los domingos, aunque
+            le insistamos que no hace falta.</p>
+        </div>
+        <div class="ticket-borde ticket-borde--abajo"></div>
+      </li>
+    </ul>
+  </section>
+
+  <!-- ===================== 6. CALENDARIO FISCAL ===================== -->
+  <section class="calendario" id="calendario" aria-label="Calendario fiscal">
+    <div class="calendario-cab">
+      <p class="sobretitulo">Nº 005 · Calendario fiscal</p>
+      <h2 class="titular" data-revelar>Los plazos no esperan.</h2>
+      <p class="parrafo">El calendario general de trámites del año, línea a línea.
+        El que toca ahora sale marcado, con los días que quedan calculados en el
+        momento en que abres esta página.</p>
+    </div>
+
+    <div class="calendario-tabla" role="table" aria-label="Trámites fiscales del año" id="calendarioTabla">
+      <div class="calendario-fila calendario-fila--cab" role="row">
+        <span role="columnheader">Mes</span>
+        <span role="columnheader">Trámite</span>
+        <span role="columnheader">Modelos</span>
+        <span role="columnheader">Plazo</span>
+        <span role="columnheader">Días</span>
+      </div>
+
+      <div class="calendario-fila" role="row" data-mes="1" data-dia="20">
+        <span role="cell" data-cal="mes">Enero</span>
+        <span role="cell" data-cal="tramite">IVA, retenciones e intracomunitarias del 4º trimestre</span>
+        <span role="cell" data-cal="modelos">303 · 111 · 115 · 349</span>
+        <span role="cell" data-cal="plazo">Hasta el 20 de enero</span>
+        <span role="cell" class="calendario-dias" data-cal="dias">—</span>
+      </div>
+      <div class="calendario-fila" role="row" data-mes="1" data-dia="30">
+        <span role="cell" data-cal="mes">Enero</span>
+        <span role="cell" data-cal="tramite">Resumen anual de IVA y pago fraccionado de IRPF (4T)</span>
+        <span role="cell" data-cal="modelos">390 · 130</span>
+        <span role="cell" data-cal="plazo">Hasta el 30 de enero</span>
+        <span role="cell" class="calendario-dias" data-cal="dias">—</span>
+      </div>
+      <div class="calendario-fila" role="row" data-mes="2" data-dia="28">
+        <span role="cell" data-cal="mes">Febrero</span>
+        <span role="cell" data-cal="tramite">Declaración anual de operaciones con terceros</span>
+        <span role="cell" data-cal="modelos">347</span>
+        <span role="cell" data-cal="plazo">Hasta el 28 de febrero</span>
+        <span role="cell" class="calendario-dias" data-cal="dias">—</span>
+      </div>
+      <div class="calendario-fila" role="row" data-mes="4" data-dia="20">
+        <span role="cell" data-cal="mes">Abril</span>
+        <span role="cell" data-cal="tramite">IVA, retenciones y pago fraccionado del 1er trimestre</span>
+        <span role="cell" data-cal="modelos">303 · 111 · 115 · 130 · 349</span>
+        <span role="cell" data-cal="plazo">Hasta el 20 de abril</span>
+        <span role="cell" class="calendario-dias" data-cal="dias">—</span>
+      </div>
+      <div class="calendario-fila" role="row" data-mes="6" data-dia="30">
+        <span role="cell" data-cal="mes">Junio</span>
+        <span role="cell" data-cal="tramite">Fin de la campaña de la Renta</span>
+        <span role="cell" data-cal="modelos">100</span>
+        <span role="cell" data-cal="plazo">Hasta el 30 de junio</span>
+        <span role="cell" class="calendario-dias" data-cal="dias">—</span>
+      </div>
+      <div class="calendario-fila" role="row" data-mes="7" data-dia="20">
+        <span role="cell" data-cal="mes">Julio</span>
+        <span role="cell" data-cal="tramite">IVA, retenciones y pago fraccionado del 2º trimestre</span>
+        <span role="cell" data-cal="modelos">303 · 111 · 115 · 130 · 349</span>
+        <span role="cell" data-cal="plazo">Hasta el 20 de julio</span>
+        <span role="cell" class="calendario-dias" data-cal="dias">—</span>
+      </div>
+      <div class="calendario-fila" role="row" data-mes="7" data-dia="25">
+        <span role="cell" data-cal="mes">Julio</span>
+        <span role="cell" data-cal="tramite">Impuesto sobre Sociedades</span>
+        <span role="cell" data-cal="modelos">200</span>
+        <span role="cell" data-cal="plazo">Hasta el 25 de julio</span>
+        <span role="cell" class="calendario-dias" data-cal="dias">—</span>
+      </div>
+      <div class="calendario-fila" role="row" data-mes="10" data-dia="20">
+        <span role="cell" data-cal="mes">Octubre</span>
+        <span role="cell" data-cal="tramite">IVA, retenciones y pago fraccionado del 3er trimestre</span>
+        <span role="cell" data-cal="modelos">303 · 111 · 115 · 130 · 349</span>
+        <span role="cell" data-cal="plazo">Hasta el 20 de octubre</span>
+        <span role="cell" class="calendario-dias" data-cal="dias">—</span>
+      </div>
+      <div class="calendario-fila" role="row" data-mes="12" data-dia="20">
+        <span role="cell" data-cal="mes">Diciembre</span>
+        <span role="cell" data-cal="tramite">Pago fraccionado del Impuesto sobre Sociedades</span>
+        <span role="cell" data-cal="modelos">202</span>
+        <span role="cell" data-cal="plazo">Hasta el 20 de diciembre</span>
+        <span role="cell" class="calendario-dias" data-cal="dias">—</span>
+      </div>
+    </div>
+    <p class="calendario-nota">Calendario general orientativo con los modelos más
+      habituales de autónomos y pymes. Si el vencimiento cae en fin de semana o
+      festivo, la AEAT lo traslada al siguiente día hábil; confirma siempre tu
+      caso concreto con el despacho.</p>
+  </section>
+
+  <!-- ===================== 7. RESEÑAS ===================== -->
+  <section class="resenas" id="resenas" aria-label="Opiniones de clientes">
+    <div class="resenas-cab">
+      <p class="sobretitulo">Nº 006 · Opiniones</p>
+      <h2 class="titular" data-revelar>Lo que dicen quienes ya suman con nosotros.</h2>
+      <p class="ticket-pie">
+        Valoración anotada a mano a partir de las respuestas de nuestros
+        clientes; no procede de Google, TripAdvisor ni de ninguna otra
+        plataforma.
+      </p>
+    </div>
+
+    <div class="resenas-rejilla">
+      <figure class="ticket ticket--total" aria-hidden="false">
+        <div class="ticket-borde ticket-borde--arriba"></div>
+        <div class="ticket-cuerpo">
+          <p class="ticket-cab">Valoración media</p>
+          <p class="resenas-cifra"><span class="contador-cifra" data-hasta="9.7" data-decimales="1" id="valoracionCifra">0,0</span><span class="resenas-sobre">/10</span></p>
+          <p class="ticket-pie">A partir de 41 respuestas recogidas por el despacho.</p>
+        </div>
+        <div class="ticket-borde ticket-borde--abajo"></div>
+      </figure>
+
+      <ul class="resenas-lista">
+        <li class="ticket ticket--testimonio">
+          <div class="ticket-borde ticket-borde--arriba"></div>
+          <div class="ticket-cuerpo">
+            <p>«Después de años cambiando de gestoría, aquí por fin alguien me
+              explica los números sin que parezcan chino.»</p>
+            <p class="ticket-firma">— Manuel, autónomo</p>
+          </div>
+          <div class="ticket-borde ticket-borde--abajo"></div>
+        </li>
+        <li class="ticket ticket--testimonio">
+          <div class="ticket-borde ticket-borde--arriba"></div>
+          <div class="ticket-cuerpo">
+            <p>«Llevan la nómina de mis cuatro empleadas desde que abrí y no se
+              les ha pasado un plazo nunca.»</p>
+            <p class="ticket-firma">— Sabela, hostelería</p>
+          </div>
+          <div class="ticket-borde ticket-borde--abajo"></div>
+        </li>
+        <li class="ticket ticket--testimonio">
+          <div class="ticket-borde ticket-borde--arriba"></div>
+          <div class="ticket-cuerpo">
+            <p>«Me ayudaron a montar la sociedad en dos semanas y a entender qué
+              modelo tocaba presentar cada mes.»</p>
+            <p class="ticket-firma">— Bruno, emprendedor</p>
+          </div>
+          <div class="ticket-borde ticket-borde--abajo"></div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ===================== 8. CONTACTO + PIE ===================== -->
+  <section class="contacto" id="contacto" aria-label="Contacto">
+    <div class="contacto-rejilla">
+      <div class="contacto-ficha">
+        <p class="sobretitulo">Nº 007 · Despacho</p>
+        <h2 class="titular" data-revelar>Hablamos cuando quieras.</h2>
+        <dl class="contacto-datos">
+          <div><dt>Dirección</dt><dd>Rúa do Curro, 14, entresuelo · 15200 Noia (A Coruña)</dd></div>
+          <div><dt>Teléfono</dt><dd><a href="tel:+34981000047">981 00 00 47</a></dd></div>
+          <div><dt>WhatsApp</dt><dd><a href="https://wa.me/34600000047" target="_blank" rel="noopener">600 00 00 47</a></dd></div>
+          <div><dt>Correo</dt><dd><a href="mailto:hola@refoxoxestion.example">hola@refoxoxestion.example</a></dd></div>
+          <div><dt>Horario</dt><dd>Lunes a viernes, 9:00–14:00 y 16:00–19:00<br>Agosto: horario intensivo, 8:00–15:00</dd></div>
+        </dl>
+
+        <div class="mapa" id="mapa">
+          <button class="boton boton--linea" id="mapaBoton" type="button">Ver el despacho en el mapa</button>
+          <p class="mapa-nota">El mapa de Google no se carga hasta que pulsas el
+            botón: así no se instala ninguna cookie de terceros sin que lo
+            decidas tú.</p>
+        </div>
+      </div>
+
+      <form class="formulario" id="formulario" novalidate>
+        <p class="formulario-aviso">Formulario de muestra: no se envía nada a ningún sitio.</p>
+        <div class="campo-fila">
+          <div class="campo">
+            <label for="fNombre">Nombre</label>
+            <input type="text" id="fNombre" name="nombre" autocomplete="name" required>
+          </div>
+          <div class="campo">
+            <label for="fTelefono">Teléfono</label>
+            <input type="tel" id="fTelefono" name="telefono" autocomplete="tel" required>
+          </div>
+        </div>
+        <div class="campo">
+          <label for="fMensaje">¿En qué podemos ayudarte?</label>
+          <textarea id="fMensaje" name="mensaje" rows="4"></textarea>
+        </div>
+        <div class="campo-check">
+          <input type="checkbox" id="fOk" required>
+          <label for="fOk">He leído el <a href="privacidad.html">aviso de privacidad</a>.</label>
+        </div>
+        <button class="boton boton--bronce" type="submit">Enviar (demostración)</button>
+        <p class="formulario-respuesta" id="formularioRespuesta" role="status"></p>
+      </form>
+    </div>
+  </section>
+
+  <a class="whatsapp-flotante" href="https://wa.me/34600000047" target="_blank" rel="noopener" data-iman aria-label="Escribir por WhatsApp a Refoxo Xestión">
+    <svg viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M16 4a12 12 0 0 0-10.4 18l-1.5 5.5 5.7-1.5A12 12 0 1 0 16 4zm0 2.2a9.8 9.8 0 0 1 8.3 15 9.8 9.8 0 0 1-13.9 3.6l-.5-.3-3.4.9.9-3.3-.3-.5A9.8 9.8 0 0 1 16 6.2zm-4 4.4c-.3 0-.6.1-.9.5-.3.3-1.1 1-1.1 2.5s1.1 2.9 1.3 3.1c.2.2 2.2 3.4 5.4 4.7 2.7 1.1 3.2.9 3.8.8.6-.1 1.9-.8 2.2-1.5.3-.7.3-1.4.2-1.5-.1-.2-.3-.3-.6-.4-.3-.2-1.9-.9-2.2-1.1-.3-.1-.5-.2-.7.2-.2.3-.8 1.1-1 1.3-.2.2-.4.3-.7.1-.3-.2-1.3-.5-2.6-1.6-.9-.8-1.6-1.9-1.8-2.2-.2-.3 0-.5.1-.6.1-.1.3-.4.5-.6.1-.2.2-.3.3-.5.1-.2 0-.4 0-.6-.1-.2-.7-1.9-1-2.5-.3-.6-.5-.6-.7-.6z"/></svg>
+  </a>
+
+</main>
+
+<!-- ===================== PIE ===================== -->
+<footer class="pie">
+  <div class="pie-rejilla">
+    <div class="pie-marca">
+      <img src="assets/logo.svg" alt="" width="46" height="46">
+      <div>
+        <p>Refoxo <em>Xestión</em></p>
+        <span>Asesoría fiscal, laboral y contable · Noia</span>
+      </div>
+    </div>
+    <div>
+      <h2>Secciones</h2>
+      <p><a href="#servicios">Servicios</a><br><a href="#equipo">Equipo</a><br><a href="#calendario">Calendario fiscal</a></p>
+    </div>
+    <div>
+      <h2>Despacho</h2>
+      <p>Rúa do Curro, 14, entresuelo<br>15200 Noia (A Coruña)<br>981 00 00 47</p>
+    </div>
+    <div>
+      <h2>Legal</h2>
+      <p><a href="aviso-legal.html">Aviso legal</a><br><a href="privacidad.html">Privacidad</a></p>
+    </div>
+    <div>
+      <h2>Horario</h2>
+      <p>L–V, 9:00–14:00<br>y 16:00–19:00</p>
+    </div>
+  </div>
+  <p class="sello">
+    <strong>Sitio de demostración.</strong> Refoxo Xestión es un negocio
+    ficticio; los datos, fotografías y opiniones son de muestra y no
+    corresponden a ninguna asesoría real. Plantilla de la biblioteca de
+    WEBS NEGOCIOS.
+  </p>
+</footer>
+
+<!-- ===================== AVISO DE COOKIES ===================== -->
+<div class="cookie-banner" id="cookieBanner" hidden>
+  <p>Usamos únicamente cookies técnicas propias para recordar tu elección. Sin
+    cookies de terceros salvo que actives el mapa de Google.
+    <a class="cookie-mas" href="privacidad.html">Más información</a>
+  </p>
+  <div class="cookie-acciones">
+    <button class="boton boton--bronce" id="cookieOk" type="button">Vale, de acuerdo</button>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

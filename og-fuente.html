@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>og Refoxo Xestión</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Work+Sans:wght@400;600;800&display=swap">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{width:1200px;height:630px;background:#F0E6D2;color:#1B3A4B;font-family:'Work Sans',sans-serif;
+       overflow:hidden;position:relative}
+  .caja{position:absolute;inset:0;padding:60px 66px;display:flex;flex-direction:column;justify-content:space-between}
+  .alto{display:flex;align-items:center;gap:16px;font-family:'Courier Prime',monospace;
+        font-size:18px;letter-spacing:.14em;text-transform:uppercase;color:#485E67}
+  .alto b{background:#C9962C;color:#1B3A4B;padding:5px 12px;letter-spacing:.1em;font-weight:700}
+  h1{font-size:80px;line-height:1.04;font-weight:800;letter-spacing:-.02em;max-width:16ch}
+  .cinta{position:absolute;right:80px;top:70px;width:150px;display:flex;flex-direction:column;align-items:center;gap:8px}
+  .carrete{width:70px;height:70px;border-radius:50%;background:#1B3A4B;border:5px solid #C9962C;
+    box-shadow:inset 0 0 0 8px #F0E6D2}
+  .tira{width:26px;height:340px;background:#E8DBC2;border:2px solid #1B3A4B;position:relative;overflow:hidden}
+  .tira i{position:absolute;left:0;right:0;height:2px;background:#1B3A4B;opacity:.35}
+  .bajo{display:flex;align-items:flex-end;justify-content:flex-start;gap:30px}
+  .bajo p{font-family:'Courier Prime',monospace;font-size:17px;color:#485E67;line-height:1.6;max-width:46ch}
+  .sello{position:absolute;right:66px;bottom:60px;font-family:'Courier Prime',monospace;font-size:14px;
+         color:#F0E6D2;background:#1B3A4B;padding:7px 14px;letter-spacing:.08em;text-transform:uppercase;
+         white-space:nowrap;font-weight:700}
+  .ticket{position:absolute;right:66px;bottom:106px;width:230px;background:#E8DBC2;border:1px solid #1B3A4B;padding:16px 18px}
+  .ticket p{font-family:'Courier Prime',monospace;font-size:13px;display:flex;justify-content:space-between;
+    border-bottom:1px dashed #1B3A4B;padding-bottom:6px;margin-bottom:6px;color:#1B3A4B}
+  .ticket p:last-child{border-bottom:none;font-weight:700;color:#795A1A;border-top:2px solid #1B3A4B;padding-top:8px;margin-top:8px}
+</style>
+</head>
+<body>
+  <div class="caja">
+    <div class="alto"><b>REFOXO XESTIÓN</b> <span>Asesoría fiscal · laboral · contable · Noia</span></div>
+    <h1>Línea a línea,<br>hasta que <span style="color:#795A1A">cuadra</span>.</h1>
+    <div class="bajo">
+      <p>Fiscal, laboral, contable y constitución de empresas,<br>todo en un mismo despacho en el centro de Noia.</p>
+      <span class="sello">Sitio de demostración · negocio ficticio</span>
+    </div>
+  </div>
+  <div class="cinta">
+    <div class="carrete"></div>
+    <div class="tira">
+      <i style="top:20px"></i><i style="top:60px"></i><i style="top:100px"></i><i style="top:140px"></i>
+      <i style="top:180px"></i><i style="top:220px"></i><i style="top:260px"></i><i style="top:300px"></i>
+    </div>
+  </div>
+  <div class="ticket">
+    <p><span>Fiscal</span><span>✓</span></p>
+    <p><span>Laboral</span><span>✓</span></p>
+    <p><span>Contable</span><span>✓</span></p>
+    <p><span>Total</span><span>EN SU SITIO</span></p>
+  </div>
+</body>
+</html>

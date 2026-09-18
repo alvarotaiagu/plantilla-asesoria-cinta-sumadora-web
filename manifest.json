@@ -1,0 +1,14 @@
+{
+  "name": "Refoxo Xestión — Asesoría fiscal, laboral y contable (demo)",
+  "short_name": "Refoxo Xestión",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#F0E6D2",
+  "theme_color": "#1B3A4B",
+  "lang": "es",
+  "description": "Sitio de demostración de negocio ficticio para la biblioteca WEBS NEGOCIOS.",
+  "icons": [
+    { "src": "assets/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}

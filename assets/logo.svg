@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="Refoxo Xestión">
+  <title>Refoxo Xestión</title>
+  <!-- Marca: la cola del "refoxo" (raposo) se dibuja como el rizo de una cinta de sumar -->
+  <circle cx="60" cy="60" r="58" fill="#1B3A4B"/>
+  <circle cx="60" cy="60" r="58" fill="none" stroke="#C9962C" stroke-width="2"/>
+  <path d="M30 78 C30 50, 44 34, 62 34 C82 34, 90 48, 84 62 C80 71, 68 72, 66 62 C64 54, 70 51, 74 56"
+        fill="none" stroke="#F0E6D2" stroke-width="6.4" stroke-linecap="round"/>
+  <!-- orejas del raposo, dos triángulos simples sobre el arranque del rizo -->
+  <path d="M30 78 L20 88 L34 86 Z" fill="#F0E6D2"/>
+  <path d="M30 78 L24 92 L38 90 Z" fill="#F0E6D2" opacity="0"/>
+  <circle cx="74" cy="56" r="3.4" fill="#C9962C"/>
+</svg>

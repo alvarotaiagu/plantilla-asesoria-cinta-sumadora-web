@@ -6,18 +6,34 @@
    ========================================================================== */
 
 :root{
-  /* ---- paleta ---- */
+  /* ---- paleta ----
+     Rojo real de Dourado & Fernández (dourado-fernandez-asesores-carballo-web),
+     puesto aquí como paleta por defecto para el envío comparativo de las 7
+     plantillas: el cliente ya eligió este color para su marca, así que se
+     retira el color como variable y solo compara estructura/concepto.
+     El azul prusia + bronce nativo de esta plantilla sigue disponible como
+     4º botón «Original» del mando de paleta (ver más abajo y el README). */
   --crema:#F0E6D2;
   --crema-panel:#E8DBC2;
-  --prusia:#1B3A4B;
-  --prusia-hondo:#14303F;
-  --bronce:#C9962C;
-  --bronce-boton:#CC9C39;
+  --prusia:#5C1114;      /* --verde de Dourado */
+  --prusia-hondo:#3E0B0D; /* --verde-oscuro de Dourado */
+  --bronce:#9C2A2E;      /* --oro de Dourado (acento principal) */
+  --bronce-boton:#9C2A2E; /* = --bronce: en el original ambos eran casi el mismo dorado */
 
   /* tokens de texto calculados con script de contraste (ver README) */
   --apagado:#485E67;        /* 5.5:1 sobre crema · 5.0:1 sobre crema-panel */
-  --apagado-claro:#989D97;  /* 5.0:1 sobre prusia-hondo */
-  --bronce-texto:#795A1A;   /* 5.2:1 sobre crema · 4.7:1 sobre crema-panel */
+  --apagado-claro:#989D97;  /* 6.0:1 sobre prusia-hondo */
+  --bronce-texto:#7A1418;   /* --oro-tinta de Dourado · 8.7:1 sobre crema · 7.9:1 sobre crema-panel */
+
+  /* El rojo de Dourado es más oscuro y más cercano en luminancia entre sí
+     (acento vs. superficie oscura) que el azul-navy+dorado original, así
+     que --prusia como texto sobre --bronce (botones, etiquetas) y --bronce
+     como texto sobre --prusia-hondo (pie, panel) YA NO pasan WCAG con este
+     rojo. Estos dos tokens derivados arreglan justo esos dos usos; cada
+     paleta del mando los redefine para que Original/Grafito/Vino sigan
+     igual que siempre (ver README, "El control de paleta"). */
+  --sobre-bronce:var(--crema);  /* texto sobre fondo --bronce/--bronce-boton · 6.1:1 */
+  --bronce-vivo:#CD7174;        /* --bronce como texto sobre --prusia-hondo · 4.9:1 */
 
   --cont:1280px;
   --lado:clamp(20px, 4.6vw, 64px);
@@ -36,15 +52,28 @@
    BLOQUE DE DEMOSTRACIÓN: se borra entero al entregar la web ya como
    oficial (ver README, "El control de paleta"). Solo cambia el color de
    marca — la tinta apagada y el papel (crema/crema-panel/apagado*) son
-   los mismos en las tres, y el logo real no cambia de color con el mando.
-   Grafito: gunmetal + níquel envejecido. Vino: cuero oxblood + latón. */
+   los mismos en las cuatro, y el logo real no cambia de color con el mando.
+   Original: el azul prusia + bronce nativo de esta plantilla (era el :root
+   de siempre, ahora es una clase explícita porque el :root pasó a ser el
+   rojo de Dourado). Grafito: gunmetal + níquel envejecido. Vino: cuero
+   oxblood + latón. Cada bloque redefine también --sobre-bronce/--bronce-vivo
+   para que sus botones y su pie sigan con el mismo texto oscuro-sobre-claro
+   de siempre (el ajuste claro-sobre-oscuro solo hace falta para el rojo de
+   Dourado, ver el comentario en :root). */
+html.paleta-original{
+  --prusia:#1B3A4B; --prusia-hondo:#14303F;
+  --bronce:#C9962C; --bronce-boton:#CC9C39; --bronce-texto:#795A1A;
+  --sobre-bronce:var(--prusia); --bronce-vivo:var(--bronce);
+}
 html.paleta-grafito{
   --prusia:#2B3338; --prusia-hondo:#1B2226;
   --bronce:#A7B1B8; --bronce-boton:#AEB8BE; --bronce-texto:#48555E;
+  --sobre-bronce:var(--prusia); --bronce-vivo:var(--bronce);
 }
 html.paleta-vino{
   --prusia:#4A1519; --prusia-hondo:#330E11;
   --bronce:#C6A455; --bronce-boton:#CDAB5C; --bronce-texto:#6F5420;
+  --sobre-bronce:var(--prusia); --bronce-vivo:var(--bronce);
 }
 
 *,*::before,*::after{box-sizing:border-box;}
@@ -71,13 +100,13 @@ button{font:inherit;}
 a:focus-visible,button:focus-visible,summary:focus-visible,
 input:focus-visible,select:focus-visible,textarea:focus-visible,
 [data-scroll-teclado]:focus-visible{outline:3px solid var(--bronce-texto);outline-offset:3px;}
-::selection{background:var(--bronce);color:var(--prusia);}
+::selection{background:var(--bronce);color:var(--sobre-bronce);}
 
 .visual-oculto{position:absolute;width:1px;height:1px;overflow:hidden;
   clip-path:inset(50%);white-space:nowrap;}
 
 .salto{
-  position:absolute;left:-9999px;top:0;z-index:999;background:var(--bronce);color:var(--prusia);
+  position:absolute;left:-9999px;top:0;z-index:999;background:var(--bronce);color:var(--sobre-bronce);
   padding:14px 22px;font-family:var(--mono);font-weight:700;text-transform:uppercase;letter-spacing:.06em;
 }
 .salto:focus{left:12px;top:12px;}
@@ -94,7 +123,7 @@ input:focus-visible,select:focus-visible,textarea:focus-visible,
   font-family:var(--mono);text-transform:uppercase;letter-spacing:.1em;
   font-size:.76rem;color:var(--apagado);display:flex;align-items:center;gap:10px;margin:0 0 1.3em;
 }
-.rotulo span{background:var(--bronce);color:var(--prusia);padding:3px 9px;font-weight:700;}
+.rotulo span{background:var(--bronce);color:var(--sobre-bronce);padding:3px 9px;font-weight:700;}
 
 .sobretitulo{
   font-family:var(--mono);text-transform:uppercase;letter-spacing:.1em;
@@ -119,7 +148,7 @@ html.has-motion [data-aparecer]{opacity:0;transform:translate3d(0,22px,0);}
   text-decoration:none;cursor:pointer;background:none;color:var(--prusia);
   transition:background .25s,color .25s,border-color .25s,transform .25s;will-change:transform;
 }
-.boton--bronce{background:var(--bronce-boton);color:var(--prusia);border-color:var(--bronce-boton);}
+.boton--bronce{background:var(--bronce-boton);color:var(--sobre-bronce);border-color:var(--bronce-boton);}
 .boton--bronce:hover{background:var(--prusia);border-color:var(--prusia);color:var(--crema);}
 .boton--linea{border-color:var(--prusia);color:var(--prusia);}
 .boton--linea:hover{background:var(--prusia);color:var(--crema);}
@@ -319,7 +348,7 @@ h3{font-family:var(--display);font-weight:700;font-size:1.3rem;color:var(--prusi
   font-family:var(--mono);font-size:.78rem;color:var(--apagado);white-space:nowrap;
   border:1px solid var(--prusia);padding:5px 10px;border-radius:2px;
 }
-.cinta-linea.esta-sumada .cinta-acumulado{background:var(--bronce);color:var(--prusia);border-color:var(--bronce);font-weight:700;}
+.cinta-linea.esta-sumada .cinta-acumulado{background:var(--bronce);color:var(--sobre-bronce);border-color:var(--bronce);font-weight:700;}
 
 .cinta-panel{
   position:sticky;top:100px;background:var(--prusia-hondo);color:var(--crema);
@@ -327,7 +356,7 @@ h3{font-family:var(--display);font-weight:700;font-size:1.3rem;color:var(--prusi
 }
 .cinta-panel-eti{font-family:var(--mono);text-transform:uppercase;letter-spacing:.1em;
   font-size:.7rem;color:var(--apagado-claro);margin:0 0 .6em;}
-.cinta-panel-cifra{font-family:var(--mono);font-weight:700;font-size:2.4rem;color:var(--bronce);
+.cinta-panel-cifra{font-family:var(--mono);font-weight:700;font-size:2.4rem;color:var(--bronce-vivo);
   margin:0;font-variant-numeric:tabular-nums;}
 .cinta-panel-nota{font-size:.82rem;color:var(--apagado-claro);margin:.8em 0 0;}
 @media (max-width:880px){
@@ -373,16 +402,16 @@ h3{font-family:var(--display);font-weight:700;font-size:1.3rem;color:var(--prusi
 .calendario-fila:not(.calendario-fila--cab) [data-cal="tramite"]{color:var(--apagado);}
 .calendario-dias{font-weight:700;text-align:right;color:var(--apagado);}
 .calendario-fila.es-proxima{
-  background:var(--bronce);color:var(--prusia);border-radius:2px;
-  border-bottom-color:var(--prusia);
+  background:var(--bronce);color:var(--sobre-bronce);border-radius:2px;
+  border-bottom-color:var(--sobre-bronce);
 }
-.calendario-fila.es-proxima [data-cal],.calendario-fila.es-proxima .calendario-dias{color:var(--prusia);}
+.calendario-fila.es-proxima [data-cal],.calendario-fila.es-proxima .calendario-dias{color:var(--sobre-bronce);}
 .calendario-fila.es-proxima [data-cal="mes"]{font-weight:700;}
 .calendario-fila.es-proxima .calendario-dias{
   text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:4px;position:relative;
 }
 .calendario-fila.es-proxima .calendario-dias::after{
-  content:"";position:absolute;right:0;left:0;bottom:-6px;height:1px;background:var(--prusia);
+  content:"";position:absolute;right:0;left:0;bottom:-6px;height:1px;background:var(--sobre-bronce);
 }
 .calendario-nota{color:var(--apagado);font-size:.86rem;line-height:1.7;margin-top:1.6rem;max-width:78ch;}
 @media (max-width:880px){
@@ -451,7 +480,7 @@ h3{font-family:var(--display);font-weight:700;font-size:1.3rem;color:var(--prusi
   box-shadow:0 10px 30px -10px rgba(20,48,63,.55);border:2px solid var(--bronce);
   transition:background .25s;
 }
-.whatsapp-flotante:hover{background:var(--bronce-boton);color:var(--prusia);}
+.whatsapp-flotante:hover{background:var(--bronce-boton);color:var(--sobre-bronce);}
 .whatsapp-flotante svg{width:30px;height:30px;}
 
 /* ---------- Control de paleta (demostración, ver nota arriba en :root) ----------
@@ -478,7 +507,7 @@ h3{font-family:var(--display);font-weight:700;font-size:1.3rem;color:var(--prusi
   transition:background-color .2s,color .2s,border-color .2s;
 }
 .paleta-botones button:hover{color:var(--prusia);}
-.paleta-botones button[aria-pressed="true"]{background:var(--bronce-boton); color:var(--prusia); border-color:var(--bronce-boton); font-weight:700;}
+.paleta-botones button[aria-pressed="true"]{background:var(--bronce-boton); color:var(--sobre-bronce); border-color:var(--bronce-boton); font-weight:700;}
 @media (max-width:480px){
   .paleta:not([hidden]){ left:.9rem; bottom:calc(.9rem + var(--cookie-h)); padding:.3rem .4rem .3rem .7rem; }
   .paleta-rotulo{ display:none; }
@@ -493,11 +522,11 @@ h3{font-family:var(--display);font-weight:700;font-size:1.3rem;color:var(--prusi
 .pie-marca{display:flex;gap:14px;align-items:flex-start;}
 .pie-marca p{font-family:var(--display);font-weight:800;font-size:1.3rem;line-height:1.15;
   letter-spacing:-.01em;margin:0;color:var(--crema);}
-.pie-marca p em{font-style:normal;color:var(--bronce);}
+.pie-marca p em{font-style:normal;color:var(--bronce-vivo);}
 .pie-marca span{font-family:var(--mono);font-weight:400;font-size:.68rem;letter-spacing:.04em;
   color:var(--apagado-claro);}
 .pie-rejilla h2{font-family:var(--mono);font-size:.68rem;text-transform:uppercase;
-  letter-spacing:.1em;color:var(--bronce);margin-bottom:.9em;font-weight:700;}
+  letter-spacing:.1em;color:var(--bronce-vivo);margin-bottom:.9em;font-weight:700;}
 .pie-rejilla p{color:var(--apagado-claro);font-size:.9rem;line-height:1.8;margin:0;}
 .pie-rejilla a{text-decoration-color:var(--bronce);text-underline-offset:3px;}
 .sello{margin-top:34px;border-top:1px solid var(--prusia);padding-top:20px;color:var(--apagado-claro);font-size:.84rem;}

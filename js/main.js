@@ -69,35 +69,41 @@
   })();
 
   /* ---------------- El control de paleta ----------------
-     NO ES PARTE DEL SITIO. Es un mando para enseñar la misma web en tres
-     paletas de color delante del cliente mientras decide. Al entregar la
-     web ya como oficial se borra esta función, el bloque .paleta del CSS,
-     el <div id="paleta"> y la bandera del <head>. */
+     NO ES PARTE DEL SITIO. Es un mando para enseñar la misma web en cuatro
+     paletas de color delante del cliente mientras decide. "Dourado" (rojo
+     real de Dourado & Fernández) es el :root por defecto, sin clase; las
+     otras tres ("original" = el azul prusia + bronce nativo de esta
+     plantilla, "grafito", "vino") son clases explícitas en <html>. Al
+     entregar la web ya como oficial se borra esta función, el bloque
+     .paleta del CSS, el <div id="paleta"> y la bandera del <head>. */
   (function initPaleta() {
     var caja = $("#paleta");
     var botones = {
-      prusia: $("#paleta-prusia"),
+      dourado: $("#paleta-dourado"),
+      original: $("#paleta-original"),
       grafito: $("#paleta-grafito"),
       vino: $("#paleta-vino")
     };
-    if (!caja || !botones.prusia || !botones.grafito || !botones.vino) { return; }
+    if (!caja || !botones.dourado || !botones.original || !botones.grafito || !botones.vino) { return; }
     var CLAVE_PALETA = "cinta-paleta";
 
     caja.hidden = false; // sin JS no se enseña: no haría nada
 
     function pintar(nombre, guardar) {
-      raiz.classList.remove("paleta-grafito", "paleta-vino");
-      if (nombre !== "prusia") { raiz.classList.add("paleta-" + nombre); }
+      raiz.classList.remove("paleta-original", "paleta-grafito", "paleta-vino");
+      if (nombre !== "dourado") { raiz.classList.add("paleta-" + nombre); }
       Object.keys(botones).forEach(function (k) {
         botones[k].setAttribute("aria-pressed", String(k === nombre));
       });
       if (guardar) { try { localStorage.setItem(CLAVE_PALETA, nombre); } catch (e) {} }
     }
 
-    var actual = raiz.classList.contains("paleta-grafito") ? "grafito" :
-      raiz.classList.contains("paleta-vino") ? "vino" : "prusia";
+    var actual = raiz.classList.contains("paleta-original") ? "original" :
+      raiz.classList.contains("paleta-grafito") ? "grafito" :
+      raiz.classList.contains("paleta-vino") ? "vino" : "dourado";
     pintar(actual, false);
-    botones.prusia.addEventListener("click", function () { pintar("prusia", true); });
+    botones.dourado.addEventListener("click", function () { pintar("dourado", true); });
+    botones.original.addEventListener("click", function () { pintar("original", true); });
     botones.grafito.addEventListener("click", function () { pintar("grafito", true); });
     botones.vino.addEventListener("click", function () { pintar("vino", true); });
   })();

@@ -51,10 +51,55 @@
     var aceptado = false;
     try { aceptado = localStorage.getItem(CLAVE) === "1"; } catch (e) {}
     if (!aceptado) { banner.hidden = false; }
+
+    /* --cookie-h: alto real del aviso mientras está abierto, para que el
+       mando de paleta (y cualquier otro flotante que lo use) nunca quede
+       tapado debajo. 0px en cuanto se acepta o si nunca llegó a aparecer. */
+    function medirAlturaCookie() {
+      raiz.style.setProperty("--cookie-h", banner.hidden ? "0px" : (banner.offsetHeight + 14) + "px");
+    }
+    medirAlturaCookie();
+    window.addEventListener("resize", medirAlturaCookie);
+
     ok.addEventListener("click", function () {
       banner.hidden = true;
+      medirAlturaCookie();
       try { localStorage.setItem(CLAVE, "1"); } catch (e) {}
     });
+  })();
+
+  /* ---------------- El control de paleta ----------------
+     NO ES PARTE DEL SITIO. Es un mando para enseñar la misma web en tres
+     paletas de color delante del cliente mientras decide. Al entregar la
+     web ya como oficial se borra esta función, el bloque .paleta del CSS,
+     el <div id="paleta"> y la bandera del <head>. */
+  (function initPaleta() {
+    var caja = $("#paleta");
+    var botones = {
+      prusia: $("#paleta-prusia"),
+      grafito: $("#paleta-grafito"),
+      vino: $("#paleta-vino")
+    };
+    if (!caja || !botones.prusia || !botones.grafito || !botones.vino) { return; }
+    var CLAVE_PALETA = "cinta-paleta";
+
+    caja.hidden = false; // sin JS no se enseña: no haría nada
+
+    function pintar(nombre, guardar) {
+      raiz.classList.remove("paleta-grafito", "paleta-vino");
+      if (nombre !== "prusia") { raiz.classList.add("paleta-" + nombre); }
+      Object.keys(botones).forEach(function (k) {
+        botones[k].setAttribute("aria-pressed", String(k === nombre));
+      });
+      if (guardar) { try { localStorage.setItem(CLAVE_PALETA, nombre); } catch (e) {} }
+    }
+
+    var actual = raiz.classList.contains("paleta-grafito") ? "grafito" :
+      raiz.classList.contains("paleta-vino") ? "vino" : "prusia";
+    pintar(actual, false);
+    botones.prusia.addEventListener("click", function () { pintar("prusia", true); });
+    botones.grafito.addEventListener("click", function () { pintar("grafito", true); });
+    botones.vino.addEventListener("click", function () { pintar("vino", true); });
   })();
 
   (function mapa() {

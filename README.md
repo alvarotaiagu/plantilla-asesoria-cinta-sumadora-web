@@ -107,6 +107,53 @@ Además: foco visible en todos los interactivos, landmarks (`header`,
 logotipo se repite como texto al lado), navegación completa por teclado y
 menú móvil con `aria-expanded`.
 
+## El control de paleta (demostración, quitar antes de dar la web por oficial)
+
+Requisito de plantilla (pliego §5, «Control de paleta»): un mando flotante,
+abajo a la izquierda, para enseñar la misma web con tres colores de marca
+delante del cliente mientras decide, sin tener que reeditar el CSS en
+directo durante la reunión. Solo cambian `--prusia`, `--prusia-hondo`,
+`--bronce`, `--bronce-boton` y `--bronce-texto`; el papel (`--crema`,
+`--crema-panel`) y la tinta apagada (`--apagado`, `--apagado-claro`) son
+los mismos en las tres, así que ningún texto secundario pierde contraste.
+Se guarda en `localStorage` (`cinta-paleta`) y se resuelve en un script
+bloqueante en el `<head>`, antes de pintar, para que no haya salto de un
+color a otro al recargar.
+
+Las tres paletas:
+
+| Botón | Concepto | `--prusia` / `--prusia-hondo` | `--bronce` / `--bronce-boton` / `--bronce-texto` |
+|---|---|---|---|
+| **Prusia** (real) | azul prusia + bronce, la marca actual | `#1B3A4B` / `#14303F` | `#C9962C` / `#CC9C39` / `#795A1A` |
+| **Grafito** | como si la sumadora fuera de gunmetal con guarniciones de níquel envejecido | `#2B3338` / `#1B2226` | `#A7B1B8` / `#AEB8BE` / `#48555E` |
+| **Vino** | como si fuera de cuero oxblood con remaches de latón envejecido | `#4A1519` / `#330E11` | `#C6A455` / `#CDAB5C` / `#6F5420` |
+
+Contraste de las dos paletas alternas (misma fórmula de luminancia relativa
+WCAG que el resto del sitio, ver «Accesibilidad y contraste» arriba):
+Grafito da 10.38:1 (`--prusia`/crema), 6.20:1 y 5.61:1 (`--bronce-texto`/
+crema y crema-panel) y 5.83:1 (`--apagado-claro`/`--prusia-hondo`); Vino da
+12.00:1, 5.72:1, 5.17:1 y 6.28:1 respectivamente — las tres igualan o
+mejoran los ratios documentados de la paleta real.
+
+Para quitarlo al entregar la web ya como oficial:
+
+1. En `index.html`: borrar el `<script>` bloqueante del `<head>` que lee
+   `localStorage.getItem('cinta-paleta')`, y borrar el bloque
+   `<div class="paleta" id="paleta" hidden>…</div>` (justo antes del aviso
+   de cookies).
+2. En `css/estilo.css`: borrar el bloque `html.paleta-grafito{…}` /
+   `html.paleta-vino{…}` (justo después de `:root`) y el bloque
+   `.paleta{…}` / `.paleta-rotulo{…}` / `.paleta-botones…` (junto al CSS
+   del WhatsApp flotante). La variable `--cookie-h` de `:root` se puede
+   dejar o borrar: solo la usa el mando de paleta.
+3. En `js/main.js`: borrar la función `initPaleta()` completa y, dentro de
+   `cookies()`, la parte que mide y fija `--cookie-h` (la llamada a
+   `medirAlturaCookie()` y el listener de `resize`), ya que solo existían
+   para que el mando no quedara tapado por el aviso de cookies.
+4. Confirmar que `html.paleta-grafito`/`html.paleta-vino` no queden en
+   ninguna clase del `<html>` al cargar en limpio, y borrar de paso la
+   clave `cinta-paleta` de cualquier `localStorage` de pruebas.
+
 ## Qué tocar para reskinear a un cliente real
 
 1. **`index.html`** — cambiar el nombre, dirección, teléfonos, horario,

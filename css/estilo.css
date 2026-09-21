@@ -28,6 +28,23 @@
 
   --t-hero:clamp(2.5rem, 5.6vw, 4.8rem);
   --t-h2:clamp(1.9rem, 4vw, 3.1rem);
+
+  --cookie-h:0px;
+}
+
+/* -------------------------- Control de paleta --------------------------
+   BLOQUE DE DEMOSTRACIÓN: se borra entero al entregar la web ya como
+   oficial (ver README, "El control de paleta"). Solo cambia el color de
+   marca — la tinta apagada y el papel (crema/crema-panel/apagado*) son
+   los mismos en las tres, y el logo real no cambia de color con el mando.
+   Grafito: gunmetal + níquel envejecido. Vino: cuero oxblood + latón. */
+html.paleta-grafito{
+  --prusia:#2B3338; --prusia-hondo:#1B2226;
+  --bronce:#A7B1B8; --bronce-boton:#AEB8BE; --bronce-texto:#48555E;
+}
+html.paleta-vino{
+  --prusia:#4A1519; --prusia-hondo:#330E11;
+  --bronce:#C6A455; --bronce-boton:#CDAB5C; --bronce-texto:#6F5420;
 }
 
 *,*::before,*::after{box-sizing:border-box;}
@@ -436,6 +453,36 @@ h3{font-family:var(--display);font-weight:700;font-size:1.3rem;color:var(--prusi
 }
 .whatsapp-flotante:hover{background:var(--bronce-boton);color:var(--prusia);}
 .whatsapp-flotante svg{width:30px;height:30px;}
+
+/* ---------- Control de paleta (demostración, ver nota arriba en :root) ----------
+   --cookie-h la fija js/main.js con la altura real del aviso de cookies
+   mientras está abierto (0px en cuanto se acepta o si nunca ha aparecido),
+   para que el mando nunca quede debajo de la franja de cookies. */
+.paleta{ display:none; }
+.paleta:not([hidden]){
+  display:flex; position:fixed; z-index:96; left:1.2rem; bottom:calc(1.2rem + var(--cookie-h));
+  align-items:center; gap:.6rem; background:var(--crema-panel); border:1px solid var(--prusia);
+  border-radius:999px; padding:.4rem .5rem .4rem .9rem;
+  box-shadow:0 16px 32px -18px rgba(20,48,63,.45);
+  transition:bottom .3s ease;
+}
+.paleta-rotulo{
+  margin:0; font-family:var(--mono); font-size:.62rem; letter-spacing:.12em;
+  text-transform:uppercase; color:var(--apagado);
+}
+.paleta-botones{display:flex; gap:.3rem;}
+.paleta-botones button{
+  font-family:var(--mono); font-size:.68rem; letter-spacing:.02em; cursor:pointer;
+  background:transparent; color:var(--apagado);
+  border:1px solid var(--prusia); border-radius:999px; padding:.34rem .75rem;
+  transition:background-color .2s,color .2s,border-color .2s;
+}
+.paleta-botones button:hover{color:var(--prusia);}
+.paleta-botones button[aria-pressed="true"]{background:var(--bronce-boton); color:var(--prusia); border-color:var(--bronce-boton); font-weight:700;}
+@media (max-width:480px){
+  .paleta:not([hidden]){ left:.9rem; bottom:calc(.9rem + var(--cookie-h)); padding:.3rem .4rem .3rem .7rem; }
+  .paleta-rotulo{ display:none; }
+}
 
 /* ----------------------------------- pie ---------------------------------- */
 

@@ -112,13 +112,15 @@ menú móvil con `aria-expanded`.
 Requisito de plantilla (pliego §5, «Control de paleta»): un mando flotante,
 abajo a la izquierda, para enseñar la misma web con varios colores de marca
 delante del cliente mientras decide, sin tener que reeditar el CSS en
-directo durante la reunión. Solo cambian `--prusia`, `--prusia-hondo`,
-`--bronce`, `--bronce-boton` y `--bronce-texto`; el papel (`--crema`,
-`--crema-panel`) y la tinta apagada (`--apagado`, `--apagado-claro`) son
-los mismos en las cuatro, así que ningún texto secundario pierde contraste.
-Se guarda en `localStorage` (`cinta-paleta`) y se resuelve en un script
-bloqueante en el `<head>`, antes de pintar, para que no haya salto de un
-color a otro al recargar.
+directo durante la reunión. Cambian `--prusia`, `--prusia-hondo`, `--bronce`,
+`--bronce-boton` y `--bronce-texto` en las cuatro paletas; la tinta apagada
+(`--apagado`, `--apagado-claro`) es la misma en las cuatro, así que ningún
+texto secundario pierde contraste. El papel (`--crema`, `--crema-panel`)
+también es el mismo en tres de las cuatro (Original/Grafito/Vino comparten
+el crema envejecido nativo de esta plantilla) pero **no en Dourado**, ver
+más abajo. Se guarda en `localStorage` (`cinta-paleta`) y se resuelve en un
+script bloqueante en el `<head>`, antes de pintar, para que no haya salto
+de un color a otro al recargar.
 
 **2026-09-21 — el `:root` por defecto pasó a ser el rojo de Dourado &
 Fernández.** Alvaro va a mandar las 7 plantillas de asesoría/gestoría por
@@ -130,22 +132,41 @@ Dourado. El azul prusia + bronce nativo de esta plantilla no ha
 desaparecido: sigue siendo un botón más del mando, «Original», ahora
 como clase explícita en vez de ser el `:root` implícito.
 
+**2026-09-21 (mismo día) — el papel de Dourado también pasó a blanco.**
+Alvaro hizo notar que la web real de Dourado & Fernández también usa un
+fondo blanco/casi-blanco puro, no el papel crema envejecido nativo de esta
+plantilla. Como el objetivo del envío comparativo es que el cliente vea
+«así quedaría con vuestros colores exactos», enseñar su rojo sobre un papel
+envejecido que no es el suyo no es en realidad una vista previa fiel de su
+sitio. Por eso `--crema`/`--crema-panel` del `:root` (Dourado) pasaron de
+`#F0E6D2`/`#E8DBC2` a `#FFFFFF`/`#F2F0EA`. Original conserva el crema
+envejecido de siempre (ahora redefinido explícitamente en
+`.paleta-original`, ya que dejó de heredarlo del `:root`). Grafito y Vino
+son paletas de demostración inventadas, no la web real de nadie, así que
+también se les fijó explícitamente el mismo crema envejecido de Original
+para que no cambiaran de aspecto sin querer al mover el papel del `:root`.
+
 Las cuatro paletas:
 
-| Botón | Concepto | `--prusia` / `--prusia-hondo` | `--bronce` / `--bronce-boton` / `--bronce-texto` |
-|---|---|---|---|
-| **Dourado** (por defecto, `:root` sin clase) | rojo real de Dourado & Fernández, para la comparación entre las 7 plantillas | `#5C1114` / `#3E0B0D` | `#9C2A2E` / `#9C2A2E` / `#7A1418` |
-| **Original** (`.paleta-original`) | azul prusia + bronce, la marca nativa de esta plantilla | `#1B3A4B` / `#14303F` | `#C9962C` / `#CC9C39` / `#795A1A` |
-| **Grafito** (`.paleta-grafito`) | como si la sumadora fuera de gunmetal con guarniciones de níquel envejecido | `#2B3338` / `#1B2226` | `#A7B1B8` / `#AEB8BE` / `#48555E` |
-| **Vino** (`.paleta-vino`) | como si fuera de cuero oxblood con remaches de latón envejecido | `#4A1519` / `#330E11` | `#C6A455` / `#CDAB5C` / `#6F5420` |
+| Botón | Concepto | `--crema` / `--crema-panel` | `--prusia` / `--prusia-hondo` | `--bronce` / `--bronce-boton` / `--bronce-texto` |
+|---|---|---|---|---|
+| **Dourado** (por defecto, `:root` sin clase) | rojo Y papel reales de Dourado & Fernández, para la comparación entre las 7 plantillas | `#FFFFFF` / `#F2F0EA` | `#5C1114` / `#3E0B0D` | `#9C2A2E` / `#9C2A2E` / `#7A1418` |
+| **Original** (`.paleta-original`) | azul prusia + bronce + papel crema envejecido, la marca nativa de esta plantilla | `#F0E6D2` / `#E8DBC2` | `#1B3A4B` / `#14303F` | `#C9962C` / `#CC9C39` / `#795A1A` |
+| **Grafito** (`.paleta-grafito`) | como si la sumadora fuera de gunmetal con guarniciones de níquel envejecido | `#F0E6D2` / `#E8DBC2` | `#2B3338` / `#1B2226` | `#A7B1B8` / `#AEB8BE` / `#48555E` |
+| **Vino** (`.paleta-vino`) | como si fuera de cuero oxblood con remaches de latón envejecido | `#F0E6D2` / `#E8DBC2` | `#4A1519` / `#330E11` | `#C6A455` / `#CDAB5C` / `#6F5420` |
 
 Contraste (misma fórmula de luminancia relativa WCAG que el resto del
-sitio, ver «Accesibilidad y contraste» arriba). Dourado: 10.97:1
-(`--prusia`/crema), 8.74:1 y 7.91:1 (`--bronce-texto`/crema y
-crema-panel), 6.04:1 (`--apagado-claro`/`--prusia-hondo`) — todos por
-encima de los tokens de la paleta Original. Grafito da 10.38:1, 6.20:1 y
-5.61:1, y 5.83:1; Vino da 12.00:1, 5.72:1, 5.17:1 y 6.28:1 — las tres
-alternas igualan o mejoran los ratios de Original.
+sitio, ver «Accesibilidad y contraste» arriba), recalculado contra el
+papel de cada paleta. Dourado (sobre blanco/`#F2F0EA`): 13.59:1
+(`--prusia`/crema), 10.82:1 y 9.50:1 (`--bronce-texto`/crema y
+crema-panel), 6.83:1 y 6.00:1 (`--apagado`/crema y crema-panel), 6.04:1
+(`--apagado-claro`/`--prusia-hondo`, no depende del papel) — todos suben
+respecto a los del crema envejecido (mayor luminancia de fondo) y por
+encima de los tokens de la paleta Original. Original da 10.97:1, 8.74:1 y
+7.91:1, 5.52:1 y 4.99:1 (sobre su crema envejecido, sin cambio). Grafito
+da 10.38:1, 6.20:1 y 5.61:1, y 5.83:1; Vino da 12.00:1, 5.72:1, 5.17:1 y
+6.28:1 — Grafito/Vino igualan o mejoran los ratios de Original porque
+comparten su mismo papel.
 
 **Ojo con el rojo de Dourado en los dos usos que no son de estos cuatro
 tokens documentados:** el diseño de esta plantilla también pone `--prusia`
@@ -159,11 +180,13 @@ superficie oscura y esos mismos pares caían a 1.80:1 y 2.21:1 — ilegible.
 Por eso hay dos tokens derivados nuevos, `--sobre-bronce` (texto sobre
 `--bronce`/`--bronce-boton`) y `--bronce-vivo` (`--bronce` como texto
 sobre `--prusia-hondo`), que cada bloque de paleta redefine: en Dourado
-valen `var(--crema)` (6.09:1) y `#CD7174` (4.93:1, un rojo coral derivado
-a mano para ese único uso, no uno de los cinco hex de Dourado); en
-Original/Grafito/Vino valen `var(--prusia)`/`var(--bronce)` de esa misma
-paleta, es decir, exactamente lo que ya se pintaba antes de que existieran
-estos dos tokens — cero cambio visual en esas tres.
+valen `var(--crema)` (7.54:1 ahora que `--crema` es blanco, antes 6.09:1
+sobre el crema envejecido) y `#CD7174` (4.93:1, un rojo coral derivado a
+mano para ese único uso, no uno de los cinco hex de Dourado, y sin cambio
+porque no usa `--crema`); en Original/Grafito/Vino valen
+`var(--prusia)`/`var(--bronce)` de esa misma paleta, es decir, exactamente
+lo que ya se pintaba antes de que existieran estos dos tokens — cero
+cambio visual en esas tres.
 
 Para quitarlo al entregar la web ya como oficial:
 
@@ -178,17 +201,20 @@ Para quitarlo al entregar la web ya como oficial:
    `--cookie-h` de `:root` se puede dejar o borrar: solo la usa el mando
    de paleta.
 3. **Importante, y distinto de antes:** el `:root` que queda tras borrar
-   el paso 2 es el rojo de Dourado, no el azul+bronce nativo de esta
-   plantilla. Si esta plantilla se entrega como Refoxo Xestión (o se
-   reskinea para otro cliente que no sea Dourado), hay que **sustituir los
-   cinco colores de `:root` por los valores de `Original`** de la tabla de
-   arriba (o por la paleta del cliente real) antes de borrar el resto —
-   si no, la web «oficial» sale en rojo ajeno. Los tokens `--sobre-bronce`
-   y `--bronce-vivo` se pueden entonces borrar del todo y devolver
-   `color:var(--prusia)` / `color:var(--bronce)` a los sitios donde se
-   usaban (ver lista arriba), o dejarlos apuntando a `var(--prusia)` /
-   `var(--bronce)` sin problema, ya que con una paleta clara+dorado normal
-   vuelven a dar el mismo resultado.
+   el paso 2 es el rojo Y EL PAPEL BLANCO de Dourado, no el azul+bronce+
+   crema envejecido nativo de esta plantilla. Si esta plantilla se entrega
+   como Refoxo Xestión (o se reskinea para otro cliente que no sea
+   Dourado), hay que **sustituir los siete colores de `:root`
+   (`--crema`, `--crema-panel`, `--prusia`, `--prusia-hondo`, `--bronce`,
+   `--bronce-boton`, `--bronce-texto`) por los valores de `Original`** de
+   la tabla de arriba (o por la paleta del cliente real) antes de borrar
+   el resto — si no, la web «oficial» sale en rojo ajeno Y en papel
+   blanco ajeno, no en el papel envejecido propio de esta plantilla. Los
+   tokens `--sobre-bronce` y `--bronce-vivo` se pueden entonces borrar del
+   todo y devolver `color:var(--prusia)` / `color:var(--bronce)` a los
+   sitios donde se usaban (ver lista arriba), o dejarlos apuntando a
+   `var(--prusia)` / `var(--bronce)` sin problema, ya que con una paleta
+   clara+dorado normal vuelven a dar el mismo resultado.
 4. En `js/main.js`: borrar la función `initPaleta()` completa y, dentro de
    `cookies()`, la parte que mide y fija `--cookie-h` (la llamada a
    `medirAlturaCookie()` y el listener de `resize`), ya que solo existían

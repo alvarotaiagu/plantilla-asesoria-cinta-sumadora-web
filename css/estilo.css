@@ -12,18 +12,28 @@
      plantillas: el cliente ya eligió este color para su marca, así que se
      retira el color como variable y solo compara estructura/concepto.
      El azul prusia + bronce nativo de esta plantilla sigue disponible como
-     4º botón «Original» del mando de paleta (ver más abajo y el README). */
-  --crema:#F0E6D2;
-  --crema-panel:#E8DBC2;
+     4º botón «Original» del mando de paleta (ver más abajo y el README).
+     2026-09-21: el papel también pasó a blanco/casi-blanco puro, como el
+     sitio real de Dourado & Fernández (no el papel envejecido nativo de
+     esta plantilla), porque el envío comparativo debe enseñar SU fondo
+     además de SU acento — el crema propio de esta plantilla sobre el rojo
+     de Dourado no sería en realidad una vista previa de su web. El crema
+     envejecido original se conserva íntegro en .paleta-original (y ahora
+     también en .paleta-grafito/.paleta-vino, que antes no lo redefinían
+     porque heredaban el mismo crema del :root de entonces). */
+  --crema:#FFFFFF;
+  --crema-panel:#F2F0EA;
   --prusia:#5C1114;      /* --verde de Dourado */
   --prusia-hondo:#3E0B0D; /* --verde-oscuro de Dourado */
   --bronce:#9C2A2E;      /* --oro de Dourado (acento principal) */
   --bronce-boton:#9C2A2E; /* = --bronce: en el original ambos eran casi el mismo dorado */
 
-  /* tokens de texto calculados con script de contraste (ver README) */
-  --apagado:#485E67;        /* 5.5:1 sobre crema · 5.0:1 sobre crema-panel */
-  --apagado-claro:#989D97;  /* 6.0:1 sobre prusia-hondo */
-  --bronce-texto:#7A1418;   /* --oro-tinta de Dourado · 8.7:1 sobre crema · 7.9:1 sobre crema-panel */
+  /* tokens de texto calculados con script de contraste (ver README).
+     2026-09-21: recalculados sobre el nuevo papel blanco/F2F0EA — todos
+     suben respecto a los del crema envejecido (mayor luminancia de fondo). */
+  --apagado:#485E67;        /* 6.8:1 sobre crema(blanco) · 6.0:1 sobre crema-panel */
+  --apagado-claro:#989D97;  /* 6.0:1 sobre prusia-hondo (no depende del papel, sin cambio) */
+  --bronce-texto:#7A1418;   /* --oro-tinta de Dourado · 10.8:1 sobre crema(blanco) · 9.5:1 sobre crema-panel */
 
   /* El rojo de Dourado es más oscuro y más cercano en luminancia entre sí
      (acento vs. superficie oscura) que el azul-navy+dorado original, así
@@ -32,8 +42,8 @@
      rojo. Estos dos tokens derivados arreglan justo esos dos usos; cada
      paleta del mando los redefine para que Original/Grafito/Vino sigan
      igual que siempre (ver README, "El control de paleta"). */
-  --sobre-bronce:var(--crema);  /* texto sobre fondo --bronce/--bronce-boton · 6.1:1 */
-  --bronce-vivo:#CD7174;        /* --bronce como texto sobre --prusia-hondo · 4.9:1 */
+  --sobre-bronce:var(--crema);  /* texto sobre fondo --bronce/--bronce-boton · 7.5:1 con crema=blanco (antes 6.1:1) */
+  --bronce-vivo:#CD7174;        /* --bronce como texto sobre --prusia-hondo · 4.9:1 (no depende del papel, sin cambio) */
 
   --cont:1280px;
   --lado:clamp(20px, 4.6vw, 64px);
@@ -50,27 +60,33 @@
 
 /* -------------------------- Control de paleta --------------------------
    BLOQUE DE DEMOSTRACIÓN: se borra entero al entregar la web ya como
-   oficial (ver README, "El control de paleta"). Solo cambia el color de
-   marca — la tinta apagada y el papel (crema/crema-panel/apagado*) son
-   los mismos en las cuatro, y el logo real no cambia de color con el mando.
-   Original: el azul prusia + bronce nativo de esta plantilla (era el :root
-   de siempre, ahora es una clase explícita porque el :root pasó a ser el
-   rojo de Dourado). Grafito: gunmetal + níquel envejecido. Vino: cuero
-   oxblood + latón. Cada bloque redefine también --sobre-bronce/--bronce-vivo
-   para que sus botones y su pie sigan con el mismo texto oscuro-sobre-claro
-   de siempre (el ajuste claro-sobre-oscuro solo hace falta para el rojo de
-   Dourado, ver el comentario en :root). */
+   oficial (ver README, "El control de paleta"). Cambia el color de marca
+   Y el papel — el logo real no cambia de color con el mando. Original: el
+   azul prusia + bronce nativo de esta plantilla, con su crema envejecido
+   propio (era el :root de siempre, ahora es una clase explícita porque el
+   :root pasó a ser el rojo+blanco de Dourado). Grafito: gunmetal + níquel
+   envejecido. Vino: cuero oxblood + latón. Grafito y Vino son paletas de
+   demostración inventadas (no la web real de ningún negocio), así que
+   conservan el mismo papel crema envejecido de Original en vez de pasar a
+   blanco — el blanco puro es solo para reproducir con fidelidad el sitio
+   real de Dourado & Fernández. Cada bloque redefine también
+   --sobre-bronce/--bronce-vivo para que sus botones y su pie sigan con el
+   mismo texto oscuro-sobre-claro de siempre (el ajuste claro-sobre-oscuro
+   solo hace falta para el rojo de Dourado, ver el comentario en :root). */
 html.paleta-original{
+  --crema:#F0E6D2; --crema-panel:#E8DBC2;
   --prusia:#1B3A4B; --prusia-hondo:#14303F;
   --bronce:#C9962C; --bronce-boton:#CC9C39; --bronce-texto:#795A1A;
   --sobre-bronce:var(--prusia); --bronce-vivo:var(--bronce);
 }
 html.paleta-grafito{
+  --crema:#F0E6D2; --crema-panel:#E8DBC2;
   --prusia:#2B3338; --prusia-hondo:#1B2226;
   --bronce:#A7B1B8; --bronce-boton:#AEB8BE; --bronce-texto:#48555E;
   --sobre-bronce:var(--prusia); --bronce-vivo:var(--bronce);
 }
 html.paleta-vino{
+  --crema:#F0E6D2; --crema-panel:#E8DBC2;
   --prusia:#4A1519; --prusia-hondo:#330E11;
   --bronce:#C6A455; --bronce-boton:#CDAB5C; --bronce-texto:#6F5420;
   --sobre-bronce:var(--prusia); --bronce-vivo:var(--bronce);
